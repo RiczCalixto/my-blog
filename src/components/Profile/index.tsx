@@ -1,19 +1,38 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { SiteMetadataQuery, SiteSiteMetadata } from "../../../graphql-types"
 
-interface ProfileProps {
-  title: string
-  subtitle: string
-  description: string
+const SiteMetadata = graphql`
+  fragment SiteInformation on Site {
+    siteMetadata {
+      title
+      description
+      author
+      position
+    }
+  }
+
+  query SiteMetadata {
+    site {
+      ...SiteInformation
+    }
+  }
+`
+
+export const Profile: React.FC = () => {
+  const { site } = useStaticQuery<SiteMetadataQuery>(SiteMetadata)
+
+  return <ProfileSection data={site.siteMetadata} />
 }
 
-export const Profile: React.FC<ProfileProps> = ({
-  title,
-  subtitle,
-  description,
-}) => (
+interface ProfileSectionProps {
+  data: SiteSiteMetadata
+}
+
+const ProfileSection: React.FC<ProfileSectionProps> = ({ data }) => (
   <div>
-    <h1>{title}</h1>
-    <h2>{subtitle}</h2>
-    <p>{description}</p>
+    <h1>{data.title}</h1>
+    <h2>{data.position}</h2>
+    <p>{data.description}</p>
   </div>
 )

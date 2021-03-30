@@ -1,10 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `My personal blog`,
-    description: `A blog about my journey`,
-    author: `@ricsblog`,
+    author: `Ricardo Calixto`,
+    title: `Meu blog pessoal`,
+    position: "Engenheiro de Software e Advogado",
+    description:
+      "Compartilho meus aprendizados sobre programação, desenvolvimento pessoal, finanças e direito.",
   },
   plugins: [
+    `gatsby-plugin-graphql-codegen`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
