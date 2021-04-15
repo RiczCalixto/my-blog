@@ -7,6 +7,7 @@ module.exports = {
       "Compartilho meus aprendizados sobre programação, desenvolvimento pessoal, finanças e direito.",
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-graphql-codegen`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
