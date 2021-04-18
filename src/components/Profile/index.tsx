@@ -36,14 +36,10 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ data }) => (
     <S.ProfileLink to="/">
       <Avatar />
       <S.ProfileAuthor>
-        <h1>{data.title}</h1>
-        <S.ProfilePosition>
-          <h2>{data.position}</h2>
-        </S.ProfilePosition>
+        {data.title}
+        <S.ProfilePosition>{data.position}</S.ProfilePosition>
       </S.ProfileAuthor>
     </S.ProfileLink>
-    <S.ProfileDescription>
-      <p>{data.description}</p>
-    </S.ProfileDescription>
+    <S.ProfileDescription>{data.description}</S.ProfileDescription>
   </S.ProfileWrapper>
 )
