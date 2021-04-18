@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { SiteMetadataQuery, SiteSiteMetadata } from "../../../graphql-types"
 import { Avatar } from "../Avatar"
+import * as S from "./styled"
 
 const SiteMetadata = graphql`
   fragment SiteInformation on Site {
@@ -31,10 +32,18 @@ interface ProfileSectionProps {
 }
 
 const ProfileSection: React.FC<ProfileSectionProps> = ({ data }) => (
-  <div>
-    <Avatar />
-    <h1>{data.title}</h1>
-    <h2>{data.position}</h2>
-    <p>{data.description}</p>
-  </div>
+  <S.ProfileWrapper>
+    <S.ProfileLink to="/">
+      <Avatar />
+      <S.ProfileAuthor>
+        <h1>{data.title}</h1>
+        <S.ProfilePosition>
+          <h2>{data.position}</h2>
+        </S.ProfilePosition>
+      </S.ProfileAuthor>
+    </S.ProfileLink>
+    <S.ProfileDescription>
+      <p>{data.description}</p>
+    </S.ProfileDescription>
+  </S.ProfileWrapper>
 )
