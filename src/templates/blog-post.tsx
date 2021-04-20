@@ -1,7 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
+import { PostQuery } from "../../graphql-types"
 
-const BlogPost = ({ data }) => {
+const BlogPost: React.FC<PageProps<PostQuery>> = ({ data }) => {
   const post = data.markdownRemark
 
   return (

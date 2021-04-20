@@ -1,6 +1,6 @@
-import { Github } from "@styled-icons/boxicons-logos/Github"
-import { Medium } from "@styled-icons/remix-line/Medium"
-import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin"
+import { Github } from "@styled-icons/feather/Github"
+import { LogoMedium as Medium } from "@styled-icons/ionicons-solid/LogoMedium"
+import { Linkedin } from "@styled-icons/feather/Linkedin"
 
 export const Icons = {
   Github,

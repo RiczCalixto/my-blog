@@ -1,11 +1,25 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 import { PostItem } from "../components/PostItem"
 import { Layout } from "../components/Layout"
+import { Pagination } from "../components/Pagination"
 import Seo from "../components/seo"
+import { PostListTemplateQuery } from "../../graphql-types"
 
-const BlogList = props => {
+type BlogListPageContextType = {
+  currentPage: number
+  numPages: number
+}
+
+const BlogList = (
+  props: PageProps<PostListTemplateQuery, BlogListPageContextType>
+) => {
   const postList = props.data.allMarkdownRemark.edges
+  const { currentPage, numPages } = props.pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? "/" : `/page/${currentPage - 1}`
+  const nextPage = `/page/${currentPage + 1}`
 
   return (
     <Layout>
@@ -29,6 +43,14 @@ const BlogList = props => {
           />
         )
       )}
+      <Pagination
+        currentPage={currentPage}
+        isFirst={isFirst}
+        isLast={isLast}
+        numPages={numPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </Layout>
   )
 }

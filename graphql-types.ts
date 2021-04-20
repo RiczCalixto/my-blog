@@ -3016,6 +3016,27 @@ export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SiteMetadataQuery = { site?: Maybe<SiteInformationFragment> };
 
+export type PostListTemplateQueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type PostListTemplateQuery = { allMarkdownRemark: { edges: Array<{ node: (
+        Pick<MarkdownRemark, 'timeToRead'>
+        & { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'background' | 'category' | 'date' | 'description' | 'title'>> }
+      ) }> } };
+
+export type PostQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type PostQuery = { markdownRemark?: Maybe<(
+    Pick<MarkdownRemark, 'html'>
+    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
+  )> };
+
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
