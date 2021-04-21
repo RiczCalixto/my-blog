@@ -1,2 +1,2 @@
 import "lazysizes"
-require("prismjs/themes/prism-tomorrow.css")
+import 'gatsby-prismjs-dracula';
