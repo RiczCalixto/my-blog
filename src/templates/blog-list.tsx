@@ -1,10 +1,11 @@
 import React from "react"
+import Seo from "../components/seo"
 import { graphql, PageProps } from "gatsby"
 import { PostItem } from "../components/post-item"
 import { Layout } from "../components/layout"
 import { Pagination } from "../components/pagination"
-import Seo from "../components/seo"
 import { PostListTemplateQuery } from "../../graphql-types"
+import * as S from "../components/list-wrapper/styled"
 
 type BlogListPageContextType = {
   currentPage: number
@@ -24,25 +25,27 @@ const BlogList = (
   return (
     <Layout>
       <Seo title="Home" />
-      {postList.map(
-        ({
-          node: {
-            frontmatter: { background, category, date, description, title },
-            timeToRead,
-            fields: { slug },
-          },
-        }) => (
-          <PostItem
-            slug={slug}
-            background={background}
-            category={category}
-            date={date}
-            timeToRead={timeToRead}
-            title={title}
-            description={description}
-          />
-        )
-      )}
+      <S.ListWrapper>
+        {postList.map(
+          ({
+            node: {
+              frontmatter: { background, category, date, description, title },
+              timeToRead,
+              fields: { slug },
+            },
+          }) => (
+            <PostItem
+              slug={slug}
+              background={background}
+              category={category}
+              date={date}
+              timeToRead={timeToRead}
+              title={title}
+              description={description}
+            />
+          )
+        )}
+      </S.ListWrapper>
       <Pagination
         currentPage={currentPage}
         isFirst={isFirst}

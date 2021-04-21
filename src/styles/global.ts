@@ -72,6 +72,8 @@ export const GlobalStyles = createGlobalStyle`
     --background: #282a36;
     --white: #ffff;
     --black: #222;
+    --lightOn:#d4d400;
+    --lightOnHover: #e2e240;
   }
 
   body.light {
@@ -83,5 +85,7 @@ export const GlobalStyles = createGlobalStyle`
     --background: hsl(225deg, 25%, 95%);
     --white: #ffff;
     --black: #222;
+    --lightOn:#d4d400;
+    --lightOnHover: #e2e240;
   }
 `

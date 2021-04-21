@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Link } from "gatsby"
 
 export const MenuBarWrapper = styled.aside`
@@ -24,7 +24,16 @@ export const MenuBarLink = styled(Link)`
   display: block;
 `
 
-export const MenuBarItem = styled.span`
+const LightOnCss = css`
+  color: var(--lightOn);
+  &:hover {
+    color: var(--lightOnHover);
+  }
+`
+
+type MenuBarItemProps = { isLight?: boolean }
+
+export const MenuBarItem = styled.span<MenuBarItemProps>`
   color: var(--texts);
   cursor: pointer;
   display: block;
@@ -35,4 +44,5 @@ export const MenuBarItem = styled.span`
   &:hover {
     color: var(--highlight);
   }
+  ${props => props.isLight && LightOnCss}
 `
