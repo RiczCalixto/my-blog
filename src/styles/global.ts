@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components"
-import { Color } from "../utils/design-system"
 
 export const GlobalStyles = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/
@@ -53,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: ${Color.Black};;
+    background: var(--background);;
     line-height: 1;
     font-size: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -62,5 +61,27 @@ export const GlobalStyles = createGlobalStyle`
     display: block;
   	width: 100%;
   	height: auto;
+  }
+
+  body.dark {
+    --borders: #38444d;
+    --texts: #f8f8f2;
+    --postColor: #f8f8f2;
+    --highlight: #ff79c6;
+    --mediumBackground: #282A2D;
+    --background: #282a36;
+    --white: #ffff;
+    --black: #222;
+  }
+
+  body.light {
+    --borders: #dedede;
+    --postColor: #111;
+    --texts: #111;
+    --highlight: #FF39A8;
+    --mediumBackground: hsl(0deg, 0%, 100%);
+    --background: hsl(225deg, 25%, 95%);
+    --white: #ffff;
+    --black: #222;
   }
 `

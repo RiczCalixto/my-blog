@@ -1,19 +1,19 @@
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { Color } from "../../utils/design-system"
+
 
 export const ProfileWrapper = styled.section`
-  color: ${Color.Grey};
+  color: var(--texts);
   display: flex;
   flex-direction: column;
 `
 
 export const ProfileLink = styled(Link)`
-  color: ${Color.Grey};
+  color: var(--texts);
   text-decoration: none;
   transition: color 0.5s;
   &:hover {
-    color: ${Color.Blue};
+    color: var(--highlight);
   }
 `
 

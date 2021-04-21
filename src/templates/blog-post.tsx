@@ -1,37 +1,50 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
-import { PostQuery } from "../../graphql-types"
 import { Layout } from "../components/layout"
+import { ActionFields, RecommendedPosts } from "../components/recommended-posts"
+import { Comments } from "../components/comments"
 import Seo from "../components/seo"
 import * as S from "../components/post/styled"
+import { PostQuery } from "../../graphql-types"
 
-const BlogPost: React.FC<PageProps<PostQuery>> = ({
-  data: {
-    markdownRemark: {
-      html,
-      frontmatter: { date, description, title },
-      timeToRead,
-    },
-  },
-}) => (
-  <Layout>
-    <Seo title={title} />
-    <S.PostHeader>
-      <S.PostDate>
-        {date} • {timeToRead} min de leitura
-      </S.PostDate>
-      <S.PostTitle>{title}</S.PostTitle>
-      <S.PostDescription>{description}</S.PostDescription>
-    </S.PostHeader>
-    <S.MainContent>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </S.MainContent>
-  </Layout>
-)
+type BlogPostContextType = {
+  nextPost: ActionFields
+  previousPost: ActionFields
+}
+
+const BlogPost = ({
+  data,
+  pageContext,
+}: PageProps<PostQuery, BlogPostContextType>) => {
+  const post = data.markdownRemark
+  const next = pageContext.nextPost
+  const previous = pageContext.previousPost
+
+  return (
+    <Layout>
+      <Seo title={post.frontmatter.title} />
+      <S.PostHeader>
+        <S.PostDate>
+          {post.frontmatter.date} • {post.timeToRead} min de leitura
+        </S.PostDate>
+        <S.PostTitle>{post.frontmatter.title}</S.PostTitle>
+        <S.PostDescription>{post.frontmatter.description}</S.PostDescription>
+      </S.PostHeader>
+      <S.MainContent>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </S.MainContent>
+      <RecommendedPosts next={next} previous={previous} />
+      <Comments url={post.fields.slug} title={post.frontmatter.title} />
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query Post($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      fields {
+        slug
+      }
       frontmatter {
         title
         description

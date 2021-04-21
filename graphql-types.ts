@@ -3194,7 +3194,7 @@ export type PostQueryVariables = Exact<{
 
 export type PostQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'html' | 'timeToRead'>
-    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'date'>> }
+    & { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'date'>> }
   )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

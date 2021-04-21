@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Color } from "../../utils/design-system"
+
 
 export const SocialLinksWrapper = styled.nav`
   margin: 2rem auto;
@@ -16,11 +16,11 @@ export const SocialLinksList = styled.ul`
 export const SocialLinksItem = styled.li``
 
 export const SocialLinksLink = styled.a`
-  color: ${Color.Grey};
+  color: var(--texts);
   text-decoration: none;
   transition: color 0.5s;
   &:hover {
-    color: ${Color.Blue};
+    color: var(--highlight);
   }
 `
 
