@@ -10,18 +10,20 @@ import * as S from "./styled"
 import { GridType, ThemeColor } from "./model"
 
 export const MenuBar = () => {
-  const [theme, setTheme] = React.useState(window.__theme)
-  const [display, setDisplay] = React.useState(window.__display)
+  const [theme, setTheme] = React.useState(null)
+  const [display, setDisplay] = React.useState(null)
   const isDarkMode = theme === ThemeColor.Dark
   const isListMode = display === GridType.List
 
   React.useEffect(() => {
+    setTheme(window.__theme)
     window.__onThemeChange = () => setTheme(window.__theme)
-  }, [window])
+  }, [])
 
   React.useEffect(() => {
+    setDisplay(window.__display)
     window.__onDisplayChange = () => setDisplay(window.__display)
-  }, [window])
+  }, [])
 
   const handleThemeChange = () => {
     window.__setPreferredTheme(isDarkMode ? ThemeColor.Light : ThemeColor.Dark)

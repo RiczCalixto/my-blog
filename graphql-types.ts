@@ -258,8 +258,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -281,6 +279,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
   position?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SitePage = Node & {
@@ -736,6 +735,12 @@ export type SitePluginPluginOptions = {
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
+  appId?: Maybe<Scalars['String']>;
+  apiKey?: Maybe<Scalars['String']>;
+  indexName?: Maybe<Scalars['String']>;
+  queries?: Maybe<Array<Maybe<SitePluginPluginOptionsQueries>>>;
+  chunkSize?: Maybe<Scalars['Int']>;
+  enablePartialUpdates?: Maybe<Scalars['Boolean']>;
   output?: Maybe<Scalars['String']>;
   createLinkInHead?: Maybe<Scalars['Boolean']>;
   isTSX?: Maybe<Scalars['Boolean']>;
@@ -770,6 +775,16 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
   disableBgImage?: Maybe<Scalars['Boolean']>;
   showLineNumbers?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePluginPluginOptionsQueries = {
+  query?: Maybe<Scalars['String']>;
+  indexName?: Maybe<Scalars['String']>;
+  settings?: Maybe<SitePluginPluginOptionsQueriesSettings>;
+};
+
+export type SitePluginPluginOptionsQueriesSettings = {
+  attributesToSnippet?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type SitePluginPackageJson = {
@@ -925,8 +940,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1942,6 +1955,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
   position?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -1977,8 +1991,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___author'
   | 'siteMetadata___position'
-  | 'port'
-  | 'host'
+  | 'siteMetadata___siteUrl'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2080,8 +2093,6 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2174,6 +2185,12 @@ export type SitePluginPluginOptionsFilterInput = {
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
+  appId?: Maybe<StringQueryOperatorInput>;
+  apiKey?: Maybe<StringQueryOperatorInput>;
+  indexName?: Maybe<StringQueryOperatorInput>;
+  queries?: Maybe<SitePluginPluginOptionsQueriesFilterListInput>;
+  chunkSize?: Maybe<IntQueryOperatorInput>;
+  enablePartialUpdates?: Maybe<BooleanQueryOperatorInput>;
   output?: Maybe<StringQueryOperatorInput>;
   createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
@@ -2212,6 +2229,20 @@ export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
   disableBgImage?: Maybe<BooleanQueryOperatorInput>;
   showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsQueriesFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsQueriesFilterInput>;
+};
+
+export type SitePluginPluginOptionsQueriesFilterInput = {
+  query?: Maybe<StringQueryOperatorInput>;
+  indexName?: Maybe<StringQueryOperatorInput>;
+  settings?: Maybe<SitePluginPluginOptionsQueriesSettingsFilterInput>;
+};
+
+export type SitePluginPluginOptionsQueriesSettingsFilterInput = {
+  attributesToSnippet?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonFilterInput = {
@@ -2456,6 +2487,14 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
+  | 'pluginCreator___pluginOptions___appId'
+  | 'pluginCreator___pluginOptions___apiKey'
+  | 'pluginCreator___pluginOptions___indexName'
+  | 'pluginCreator___pluginOptions___queries'
+  | 'pluginCreator___pluginOptions___queries___query'
+  | 'pluginCreator___pluginOptions___queries___indexName'
+  | 'pluginCreator___pluginOptions___chunkSize'
+  | 'pluginCreator___pluginOptions___enablePartialUpdates'
   | 'pluginCreator___pluginOptions___output'
   | 'pluginCreator___pluginOptions___createLinkInHead'
   | 'pluginCreator___pluginOptions___isTSX'
@@ -3129,6 +3168,15 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___stripMetadata'
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
+  | 'pluginOptions___appId'
+  | 'pluginOptions___apiKey'
+  | 'pluginOptions___indexName'
+  | 'pluginOptions___queries'
+  | 'pluginOptions___queries___query'
+  | 'pluginOptions___queries___indexName'
+  | 'pluginOptions___queries___settings___attributesToSnippet'
+  | 'pluginOptions___chunkSize'
+  | 'pluginOptions___enablePartialUpdates'
   | 'pluginOptions___output'
   | 'pluginOptions___createLinkInHead'
   | 'pluginOptions___isTSX'
