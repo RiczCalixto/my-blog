@@ -1,8 +1,8 @@
 import React from "react"
 import * as S from "./styled"
-import { MenuLinks } from "../MenuLinks"
-import { Profile } from "../Profile"
-import { SocialLinks } from "../SocialLinks"
+import { MenuLinks } from "../menu-links"
+import { Profile } from "../profile"
+import { SocialLinks } from "../social-links"
 
 export const Sidebar = () => (
   <S.SidebarWrapper>

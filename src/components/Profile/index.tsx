@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { SiteMetadataQuery, SiteSiteMetadata } from "../../../graphql-types"
-import { Avatar } from "../Avatar"
+import { Avatar } from "../avatar"
 import * as S from "./styled"
 
 const SiteMetadata = graphql`

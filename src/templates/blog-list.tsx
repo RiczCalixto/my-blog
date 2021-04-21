@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
-import { PostItem } from "../components/PostItem"
-import { Layout } from "../components/Layout"
-import { Pagination } from "../components/Pagination"
+import { PostItem } from "../components/post-item"
+import { Layout } from "../components/layout"
+import { Pagination } from "../components/pagination"
 import Seo from "../components/seo"
 import { PostListTemplateQuery } from "../../graphql-types"
 

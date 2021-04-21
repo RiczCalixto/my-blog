@@ -1,3 +1,7 @@
+// require("dotenv").config()
+
+// const queries = require("./src/utils/algolia_queries")
+
 module.exports = {
   siteMetadata: {
     author: `Ricardo Calixto`,
@@ -7,10 +11,17 @@ module.exports = {
       "Compartilho meus aprendizados sobre programação, desenvolvimento pessoal, finanças e direito.",
   },
   plugins: [
+    `gatsby-plugin-transition-link`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-graphql-codegen`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-image`,
+    // needs to be the first to work with gatsby-remark-images
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `uploads`,
+        path: `${__dirname}/static/assets/img`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -28,26 +39,64 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [],
+        plugins: [
+          {
+            resolve: "gatsby-remark-relative-images-v2",
+            options: {
+              name: "uploads",
+            },
+          },
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 960,
+              linkImagesToOriginal: false,
+            },
+          },
+          `gatsby-remark-lazy-load`,
+          `gatsby-remark-prismjs`,
+        ],
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    `gatsby-plugin-gatsby-cloud`,
+    // {
+    //   resolve: `gatsby-plugin-algolia-search`,
+    //   options: {
+    //     appId: process.env.GATSBY_ALGOLIA_APP_ID,
+    //     apiKey: process.env.ALGOLIA_ADMIN_KEY,
+    //     indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+    //     queries,
+    //     chunkSize: 10000, // default: 1000
+    //     enablePartialUpdates: true,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `John Doe`,
+    //     short_name: `John Doe`,
+    //     start_url: `/`,
+    //     background_color: `#16202c`,
+    //     theme_color: `#16202c`,
+    //     display: `minimal-ui`,
+    //     icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+    //   },
+    // },
+    `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
   ],
 }
