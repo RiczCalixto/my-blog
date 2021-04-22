@@ -8,6 +8,7 @@ import { List } from "@styled-icons/bootstrap/List"
 import { Grid } from "@styled-icons/boxicons-solid/Grid"
 import * as S from "./styled"
 import { GridType, ThemeColor } from "./model"
+import getThemeColor from "../../utils/getThemeColor"
 
 export const MenuBar = () => {
   const [theme, setTheme] = React.useState(null)
@@ -36,12 +37,26 @@ export const MenuBar = () => {
   return (
     <S.MenuBarWrapper>
       <S.MenuBarGroup>
-        <S.MenuBarLink to="/" title="Voltar para Home">
+        <S.MenuBarLink
+          to="/"
+          cover
+          direction="left"
+          bg={getThemeColor()}
+          duration={0.6}
+          title="Voltar para Home"
+        >
           <S.MenuBarItem>
             <Home />
           </S.MenuBarItem>
         </S.MenuBarLink>
-        <S.MenuBarLink to="/search/" title="Pesquisar">
+        <S.MenuBarLink
+          to="/search/"
+          cover
+          direction="right"
+          bg={getThemeColor()}
+          duration={0.6}
+          title="Pesquisar"
+        >
           <S.MenuBarItem>
             <Search />
           </S.MenuBarItem>

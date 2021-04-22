@@ -10,6 +10,8 @@ export const RecommendedWrapper = styled.section`
 
 type RecommendedLinkProps = {
   isNextLink?: boolean
+  isPreviousLink?: boolean
+  hasArrow?: boolean
 }
 
 const NextLinkCss = css`
@@ -26,6 +28,9 @@ const PreviousLinkCss = css`
     margin-right: 0.5rem;
   }
 `
+const PreviousLinkWithoutArrowCss = css`
+  border-right: 1px solid var(--borders);
+`
 
 export const RecommendedLink = styled(AniLink)<RecommendedLinkProps>`
   align-items: center;
@@ -39,5 +44,7 @@ export const RecommendedLink = styled(AniLink)<RecommendedLinkProps>`
   &:hover {
     background: var(--borders);
   }
-  ${props => (props.isNextLink ? NextLinkCss : PreviousLinkCss)}
+  ${props => props.isNextLink && NextLinkCss}
+  ${props => props.isPreviousLink && PreviousLinkCss}
+  ${props => props.withoutArrow && PreviousLinkWithoutArrowCss}
 `

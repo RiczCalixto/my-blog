@@ -1,5 +1,6 @@
 import React from "react"
 import * as S from "./styled"
+import getThemeColor from "../../utils/getThemeColor"
 
 interface PostItemProps {
   slug: string
@@ -20,7 +21,13 @@ export const PostItem: React.FC<PostItemProps> = ({
   timeToRead,
   description,
 }) => (
-  <S.PostItemLink to={slug}>
+  <S.PostItemLink
+    to={slug}
+    cover
+    direction="right"
+    bg={getThemeColor()}
+    duration={0.6}
+  >
     <S.PostItemWrapper>
       <S.PostItemTag background={background}>{category}</S.PostItemTag>
       <S.PostItemInfo>

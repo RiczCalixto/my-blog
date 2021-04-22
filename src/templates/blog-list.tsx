@@ -46,14 +46,16 @@ const BlogList = (
           )
         )}
       </S.ListWrapper>
-      <Pagination
-        currentPage={currentPage}
-        isFirst={isFirst}
-        isLast={isLast}
-        numPages={numPages}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
+      {numPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          isFirst={isFirst}
+          isLast={isLast}
+          numPages={numPages}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+      )}
     </Layout>
   )
 }
