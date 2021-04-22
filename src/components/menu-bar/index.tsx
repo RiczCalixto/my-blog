@@ -58,7 +58,7 @@ export const MenuBar = () => {
             <LightOff onClick={handleThemeChange} />
           )}
         </S.MenuBarItem>
-        <S.MenuBarItem title="Mudar visualização">
+        <S.MenuBarItem title="Mudar visualização" hideOnMobile>
           {display === GridType.List ? (
             <List onClick={handleDisplayChange} />
           ) : (

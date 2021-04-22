@@ -6,7 +6,7 @@ interface PostItemProps {
   background?: string
   category: string
   date: string
-  timeToRead: number
+  timeToRead?: number
   title: string
   description: string
 }
