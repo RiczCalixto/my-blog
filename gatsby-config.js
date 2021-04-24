@@ -5,10 +5,10 @@ const queries = require("./src/utils/algolia_queries")
 module.exports = {
   siteMetadata: {
     author: `Ricardo Calixto`,
-    title: `Meu blog pessoal`,
+    title: `My Personal Blog`,
     position: "Engenheiro de Software e Advogado",
     description:
-      "Compartilho meus aprendizados sobre programação, desenvolvimento pessoal, finanças e direito.",
+      "Compartilho meus aprendizados sobre programação, desenvolvimento pessoal e direito.",
     siteUrl: `https://ricz-blog.netlify.com`,
   },
   plugins: [
@@ -76,18 +76,18 @@ module.exports = {
         enablePartialUpdates: true,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `John Doe`,
-    //     short_name: `John Doe`,
-    //     start_url: `/`,
-    //     background_color: `#16202c`,
-    //     theme_color: `#16202c`,
-    //     display: `minimal-ui`,
-    //     icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Ric`,
+        short_name: `Ric`,
+        start_url: `/`,
+        background_color: `#16202c`,
+        theme_color: `#16202c`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
     `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
