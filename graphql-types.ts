@@ -735,12 +735,6 @@ export type SitePluginPluginOptions = {
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
-  appId?: Maybe<Scalars['String']>;
-  apiKey?: Maybe<Scalars['String']>;
-  indexName?: Maybe<Scalars['String']>;
-  queries?: Maybe<Array<Maybe<SitePluginPluginOptionsQueries>>>;
-  chunkSize?: Maybe<Scalars['Int']>;
-  enablePartialUpdates?: Maybe<Scalars['Boolean']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
@@ -759,6 +753,12 @@ export type SitePluginPluginOptions = {
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  appId?: Maybe<Scalars['String']>;
+  apiKey?: Maybe<Scalars['String']>;
+  indexName?: Maybe<Scalars['String']>;
+  queries?: Maybe<Array<Maybe<SitePluginPluginOptionsQueries>>>;
+  chunkSize?: Maybe<Scalars['Int']>;
+  enablePartialUpdates?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
@@ -2197,12 +2197,6 @@ export type SitePluginPluginOptionsFilterInput = {
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
-  appId?: Maybe<StringQueryOperatorInput>;
-  apiKey?: Maybe<StringQueryOperatorInput>;
-  indexName?: Maybe<StringQueryOperatorInput>;
-  queries?: Maybe<SitePluginPluginOptionsQueriesFilterListInput>;
-  chunkSize?: Maybe<IntQueryOperatorInput>;
-  enablePartialUpdates?: Maybe<BooleanQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
@@ -2221,6 +2215,12 @@ export type SitePluginPluginOptionsFilterInput = {
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  appId?: Maybe<StringQueryOperatorInput>;
+  apiKey?: Maybe<StringQueryOperatorInput>;
+  indexName?: Maybe<StringQueryOperatorInput>;
+  queries?: Maybe<SitePluginPluginOptionsQueriesFilterListInput>;
+  chunkSize?: Maybe<IntQueryOperatorInput>;
+  enablePartialUpdates?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPluginsFilterListInput = {
@@ -2511,14 +2511,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
-  | 'pluginCreator___pluginOptions___appId'
-  | 'pluginCreator___pluginOptions___apiKey'
-  | 'pluginCreator___pluginOptions___indexName'
-  | 'pluginCreator___pluginOptions___queries'
-  | 'pluginCreator___pluginOptions___queries___query'
-  | 'pluginCreator___pluginOptions___queries___indexName'
-  | 'pluginCreator___pluginOptions___chunkSize'
-  | 'pluginCreator___pluginOptions___enablePartialUpdates'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___background_color'
@@ -2537,6 +2529,14 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___appId'
+  | 'pluginCreator___pluginOptions___apiKey'
+  | 'pluginCreator___pluginOptions___indexName'
+  | 'pluginCreator___pluginOptions___queries'
+  | 'pluginCreator___pluginOptions___queries___query'
+  | 'pluginCreator___pluginOptions___queries___indexName'
+  | 'pluginCreator___pluginOptions___chunkSize'
+  | 'pluginCreator___pluginOptions___enablePartialUpdates'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -3204,15 +3204,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___stripMetadata'
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
-  | 'pluginOptions___appId'
-  | 'pluginOptions___apiKey'
-  | 'pluginOptions___indexName'
-  | 'pluginOptions___queries'
-  | 'pluginOptions___queries___query'
-  | 'pluginOptions___queries___indexName'
-  | 'pluginOptions___queries___settings___attributesToSnippet'
-  | 'pluginOptions___chunkSize'
-  | 'pluginOptions___enablePartialUpdates'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___background_color'
@@ -3231,6 +3222,15 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___pathCheck'
+  | 'pluginOptions___appId'
+  | 'pluginOptions___apiKey'
+  | 'pluginOptions___indexName'
+  | 'pluginOptions___queries'
+  | 'pluginOptions___queries___query'
+  | 'pluginOptions___queries___indexName'
+  | 'pluginOptions___queries___settings___attributesToSnippet'
+  | 'pluginOptions___chunkSize'
+  | 'pluginOptions___enablePartialUpdates'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
