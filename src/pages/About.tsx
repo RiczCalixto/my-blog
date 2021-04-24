@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Layout } from "../components/layout"
-import { MainContent } from "../components/post/styled"
+import { Layout } from "../components/Layout"
+import { MainContent } from "../components/Post/styled"
 import Seo from "../components/seo"
 import { SocialLinks } from "../components/SocialLinks"
 
