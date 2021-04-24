@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
-import { Layout } from "../components/layout"
-import { ActionFields, RecommendedPosts } from "../components/recommended-posts"
-import { Comments } from "../components/comments"
+import { Layout } from "../components/Layout"
+import { ActionFields, RecommendedPosts } from "../components/RecommendedPosts"
+import { Comments } from "../components/Comments"
 import Seo from "../components/seo"
-import * as S from "../components/post/styled"
+import * as S from "../components/Post/styled"
 import { PostQuery } from "../../graphql-types"
 
 type BlogPostContextType = {

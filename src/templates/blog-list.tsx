@@ -1,11 +1,11 @@
 import React from "react"
 import Seo from "../components/seo"
 import { graphql, PageProps } from "gatsby"
-import { PostItem } from "../components/post-item"
-import { Layout } from "../components/layout"
-import { Pagination } from "../components/pagination"
+import { PostItem } from "../components/PostItem"
+import { Layout } from "../components/Layout"
+import { Pagination } from "../components/Pagination"
 import { PostListTemplateQuery } from "../../graphql-types"
-import * as S from "../components/list-wrapper/styled"
+import * as S from "../components/ListWrapper/styled"
 
 type BlogListPageContextType = {
   currentPage: number

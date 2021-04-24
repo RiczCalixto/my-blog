@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { SiteMetadataQuery, SiteSiteMetadata } from "../../../graphql-types"
-import { Avatar } from "../avatar"
+import { Avatar } from "../Avatar"
 import * as S from "./styled"
 import getThemeColor from "../../utils/getThemeColor"
 
