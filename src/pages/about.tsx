@@ -2,7 +2,7 @@ import * as React from "react"
 import { Layout } from "../components/layout"
 import { MainContent } from "../components/post/styled"
 import Seo from "../components/seo"
-import { SocialLinks } from "../components/social-links"
+import { SocialLinks } from "../components/SocialLinks"
 
 const AboutPage = () => (
   <Layout>

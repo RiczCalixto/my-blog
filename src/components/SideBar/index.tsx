@@ -1,6 +1,6 @@
 import React from "react"
 import * as S from "./styled"
-import { MenuLinks } from "../menu-links"
+import { MenuLinks } from "../MenuLinks"
 import { Profile } from "../Profile"
 import { SocialLinks } from "../SocialLinks"
 
