@@ -9,7 +9,7 @@ const AboutPage = () => (
     <Seo title="About" />
     <MainContent>
       <h1>Sobre mim</h1>
-      <p>
+      {/* <p>
         Meu nome é _____, nasci em São Gonçalo/RJ e atualmente moro na capital
         fluminense, gamer nas horas vagas e amante de boa cerveja, faço da minha
         vida um eterno aprendizado, sempre em busca de coisas novas para
@@ -71,7 +71,7 @@ const AboutPage = () => (
       <p>
         Você pode entrar em contato comigo através de qualquer uma das minhas
         redes sociais.
-      </p>
+      </p> */}
 
       <SocialLinks />
     </MainContent>
