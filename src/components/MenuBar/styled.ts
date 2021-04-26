@@ -87,3 +87,12 @@ export const MenuBarItem = styled.span<MenuBarItemProps>`
     width: 3.2rem;
   `}
 `
+
+export const MenuBarGroupMobile = styled.div`
+  display: none;
+  ${media.lessThan("large")`
+    display: block;
+  `}
+`
+
+

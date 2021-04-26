@@ -1,4 +1,7 @@
 import React from "react"
+import * as S from "./styled"
+import { GridType, ThemeColor } from "./model"
+import getThemeColor from "../../utils/getThemeColor"
 import { Home } from "@styled-icons/ionicons-outline/Home"
 import { SearchAlt2 as Search } from "@styled-icons/boxicons-regular/SearchAlt2"
 import { UpArrowAlt as Arrow } from "@styled-icons/boxicons-regular/UpArrowAlt"
@@ -6,11 +9,14 @@ import { Lightbulb as LightOff } from "@styled-icons/fluentui-system-regular/Lig
 import { LightbulbFilament as LightOn } from "@styled-icons/fluentui-system-filled/LightbulbFilament"
 import { List } from "@styled-icons/bootstrap/List"
 import { Grid } from "@styled-icons/boxicons-solid/Grid"
-import * as S from "./styled"
-import { GridType, ThemeColor } from "./model"
-import getThemeColor from "../../utils/getThemeColor"
+import { Menu } from "@styled-icons/boxicons-regular/Menu"
 
-export const MenuBar = () => {
+type MenuBarProps = {
+  setIsMenuOpen: (isMenuOpen: boolean) => void
+  isMenuOpen: boolean
+}
+
+export const MenuBar = ({ setIsMenuOpen, isMenuOpen }: MenuBarProps) => {
   const [theme, setTheme] = React.useState(null)
   const [display, setDisplay] = React.useState(null)
   const isDarkMode = theme === ThemeColor.Dark
@@ -19,12 +25,16 @@ export const MenuBar = () => {
   React.useEffect(() => {
     setTheme(window.__theme)
     window.__onThemeChange = () => setTheme(window.__theme)
-  }, [])
+  }, [setTheme, window.__onThemeChange])
 
   React.useEffect(() => {
     setDisplay(window.__display)
     window.__onDisplayChange = () => setDisplay(window.__display)
-  }, [])
+  }, [setDisplay, window.__onDisplayChange])
+
+  const openMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   const handleThemeChange = () => {
     window.__setPreferredTheme(isDarkMode ? ThemeColor.Light : ThemeColor.Dark)
@@ -62,6 +72,15 @@ export const MenuBar = () => {
           </S.MenuBarItem>
         </S.MenuBarLink>
       </S.MenuBarGroup>
+
+      <S.MenuBarGroupMobile>
+        <S.MenuBarGroup>
+          <S.MenuBarItem title="Abrir Menu" onClick={openMenu}>
+            <Menu />
+          </S.MenuBarItem>
+        </S.MenuBarGroup>
+      </S.MenuBarGroupMobile>
+
       <S.MenuBarGroup>
         <S.MenuBarItem
           title="Mudar o tema"
