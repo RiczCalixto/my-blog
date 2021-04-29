@@ -74,6 +74,7 @@ export const GlobalStyles = createGlobalStyle`
     --black: #222;
     --lightOn:#d4d400;
     --lightOnHover: #e2e240;
+    --grey: #D0D0D0;
   }
 
   body.light {
@@ -87,5 +88,6 @@ export const GlobalStyles = createGlobalStyle`
     --black: #222;
     --lightOn:#d4d400;
     --lightOnHover: #e2e240;
+    --grey: #585858;
   }
 `

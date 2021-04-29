@@ -1,39 +1,18 @@
 import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import { SiteMetadataQuery, SiteSiteMetadata } from "../../../graphql-types"
+import { SiteInformationFragment } from "../../../graphql-types"
 import { Avatar } from "../Avatar"
 import * as S from "./styled"
 import getThemeColor from "../../utils/getThemeColor"
 
-const SiteMetadata = graphql`
-  fragment SiteInformation on Site {
-    siteMetadata {
-      title
-      description
-      author
-      position
-    }
-  }
-
-  query SiteMetadata {
-    site {
-      ...SiteInformation
-    }
-  }
-`
-
-export const Profile: React.FC = () => {
-  const { site } = useStaticQuery<SiteMetadataQuery>(SiteMetadata)
-
-  return <ProfileSection data={site.siteMetadata} />
+type ProfileSectionProps = Partial<SiteInformationFragment> & {
+  isMobileHeader: boolean
 }
 
-interface ProfileSectionProps {
-  data: SiteSiteMetadata
-}
-
-const ProfileSection: React.FC<ProfileSectionProps> = ({ data }) => (
-  <S.ProfileWrapper>
+export const Profile = ({
+  siteMetadata,
+  isMobileHeader,
+}: ProfileSectionProps) => (
+  <S.ProfileContainer isMobileHeader={isMobileHeader}>
     <S.ProfileLink
       to="/"
       cover
@@ -43,10 +22,10 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ data }) => (
     >
       <Avatar />
       <S.ProfileAuthor>
-        {data.title}
-        <S.ProfilePosition>{data.position}</S.ProfilePosition>
+        {siteMetadata.title}
+        <S.ProfilePosition>{siteMetadata.position}</S.ProfilePosition>
       </S.ProfileAuthor>
     </S.ProfileLink>
-    <S.ProfileDescription>{data.description}</S.ProfileDescription>
-  </S.ProfileWrapper>
+    <S.ProfileDescription>{siteMetadata.description}</S.ProfileDescription>
+  </S.ProfileContainer>
 )

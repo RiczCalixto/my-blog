@@ -1,5 +1,5 @@
 import { Github } from "@styled-icons/feather/Github"
-import { LogoMedium as Medium } from "@styled-icons/ionicons-solid/LogoMedium"
+import { Medium } from "@styled-icons/simple-icons/Medium"
 import { Linkedin } from "@styled-icons/feather/Linkedin"
 
 export const Icons = {

@@ -2,10 +2,22 @@ import styled from "styled-components"
 import media from "styled-media-query"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-export const ProfileWrapper = styled.section`
-  color: var(--texts);
-  display: flex;
+type ProfileContainerProps = {
+  isMobileHeader: boolean
+}
+
+export const ProfileContainer = styled.section<ProfileContainerProps>`
+  display: ${props => (props.isMobileHeader ? "none" : "flex")};
+  color: var(--grey);
   flex-direction: column;
+  ${media.lessThan<ProfileContainerProps>("large")`
+    align-items: flex-start;
+    display: ${props => (props.isMobileHeader ? "flex" : "none")};
+    background: var(--mediumBackground);
+    border-bottom: 1px solid var(--borders);
+    padding: 1rem;
+    width: 100vw;
+  `}
 `
 
 export const ProfileLink = styled(AniLink)`
@@ -25,6 +37,7 @@ export const ProfileLink = styled(AniLink)`
 
 export const ProfileAuthor = styled.h1`
   font-size: 1.6rem;
+  font-weight: 700;
   margin: 0.5rem auto 1.5rem;
 
   ${media.lessThan("large")`
